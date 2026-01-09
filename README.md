@@ -1,6 +1,6 @@
-# Next.js + Better Auth + MongoDB Template
+# Next.js + Better Auth + MongoDB Starter
 
-A production-ready template featuring the latest tech stack for modern web applications.
+A production-ready starter featuring the latest tech stack for modern web applications.
 
 ## 🚀 Features
 
@@ -17,7 +17,7 @@ A production-ready template featuring the latest tech stack for modern web appli
 1. **Clone the repository**
 
    ```bash
-   git clone https://github.com/parthsali/next-better-auth-mongodb-template.git
+   git clone https://github.com/parthsali/next-better-auth-mongodb-starter.git
    ```
 
 2. **Install dependencies**

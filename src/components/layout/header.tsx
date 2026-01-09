@@ -7,7 +7,7 @@ import UserMenu from "@/components/auth/user-menu";
 import { ThemeToggle } from "@/components/common/theme-toggle";
 import { GithubIcon } from "@/components/icons/github";
 
-const GITHUB_REPO = "https://github.com/parthsali/next-better-auth-mongodb-template";
+const GITHUB_REPO = "https://github.com/parthsali/next-better-auth-mongodb-starter";
 
 export default function Header() {
     const { data: session, isPending } = useSession();

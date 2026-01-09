@@ -3,6 +3,7 @@
 import { useSession } from "@/lib/auth-client";
 import LoginButton from "@/components/auth/login-button";
 import UserMenu from "@/components/auth/user-menu";
+import { ThemeToggle } from "@/components/common/theme-toggle";
 
 export default function Header() {
     const { data: session, isPending } = useSession();
@@ -14,7 +15,8 @@ export default function Header() {
                     <span className="text-lg font-semibold">Next + Better Auth</span>
                 </div>
 
-                <nav className="flex items-center gap-4">
+                <nav className="flex items-center gap-2">
+                    <ThemeToggle />
                     {isPending ? (
                         <div className="h-8 w-20 animate-pulse rounded-md bg-muted" />
                     ) : session?.user ? (

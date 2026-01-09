@@ -1,17 +1,20 @@
 import { betterAuth } from "better-auth";
 import { mongodbAdapter } from "better-auth/adapters/mongodb";
-import { connectToDatabase } from "./db";
+import { MongoClient } from "mongodb";
 
-const connection = await connectToDatabase();
+const MONGODB_URI = process.env.MONGODB_URI!;
 
-if (!connection || !connection.db) {
-    throw new Error("Database not connected");
+if (!MONGODB_URI) {
+    throw new Error("Please define MONGODB_URI in env variables");
 }
 
+// Use native MongoDB client for Better Auth (separate from Mongoose)
+const client = new MongoClient(MONGODB_URI);
+const db = client.db();
+
 export const auth = betterAuth({
-    database: mongodbAdapter(connection.db, {
-        client: connection.getClient(),
-    }),
+    // Note: Not passing 'client' to disable transactions (requires replica set)
+    database: mongodbAdapter(db),
     socialProviders: {
         google: {
             clientId: process.env.GOOGLE_CLIENT_ID!,

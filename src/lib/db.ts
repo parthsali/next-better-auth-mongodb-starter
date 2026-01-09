@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 const MONGODB_URI = process.env.MONGODB_URI!;
 
 if (!MONGODB_URI) {
-    throw new Error("Please define mongo_uri in env variables");
+    throw new Error("Please define MONGODB_URI in env variables");
 }
 
 let cached = global.mongoose;
@@ -23,7 +23,9 @@ export async function connectToDatabase() {
             maxPoolSize: 10,
         };
 
-        mongoose.connect(MONGODB_URI, opts).then(() => mongoose.connection);
+        cached.promise = mongoose.connect(MONGODB_URI, opts).then((mongoose) => {
+            return mongoose.connection;
+        });
     }
 
     try {
